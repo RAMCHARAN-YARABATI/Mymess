@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pending Exchange Requests</title>
+    <link rel="stylesheet" href="/static/accounts/exchange.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Pending Exchange Requests</h1>
+
+        {% if pending_requests %}
+            {% for request in pending_requests %}
+                <div class="request-box">
+                    <p><strong>{{ request.sender.email }}</strong> wants to transfer <strong>{{ request.meal_type }}</strong> for <strong>{{ request.date }}</strong></p>
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="req_id" value="{{ request.id }}">
+                        <button name="action" value="accept">Accept</button>
+                        <button name="action" value="reject">Reject</button>
+                    </form>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No pending requests.</p>
+        {% endif %}
+
+        <div class="nav">
+            <a href="/home">🏠 Home</a>
+        </div>
+    </div>
+</body>
+</html>

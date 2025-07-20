@@ -1,0 +1,77 @@
+/* static/accounts/special_order.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #004080;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home-btn {
+  background-color: white;
+  color: #004080;
+  padding: 8px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.wallet {
+  background-color: #e0ffe0;
+  color: #004080;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.orders-section {
+  margin: 20px;
+}
+
+.meal-card {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #004080;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #0066cc;
+}
+
+.qr-box {
+  margin-top: 10px;
+  border-top: 1px dashed #aaa;
+  padding-top: 10px;
+}
+
+.qr-img {
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.note {
+  color: #cc3300;
+  font-style: italic;
+  margin-top: 10px;
+}

@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Special Orders</title>
+  <link rel="stylesheet" href="{% static 'accounts/special_order.css' %}">
+</head>
+<body>
+  <header>
+    <h2>Special Orders</h2>
+    <div>
+      <a class="home-btn" href="{% url 'home' %}">Home</a>
+      <span class="wallet">Wallet: ₹{{ user.refund_wallet }}</span>
+    </div>
+  </header>
+
+  <div class="orders-section">
+    {% for meal, status in special_order_status.items %}
+    <div class="meal-card">
+      <h3>{{ meal|title }}</h3>
+      <p>Slot Time: 
+        {% if meal == 'breakfast' %}7:00 AM - 9:00 AM
+        {% elif meal == 'lunch' %}12:00 PM - 2:00 PM
+        {% elif meal == 'dinner' %}7:00 PM - 9:00 PM
+        {% endif %}</p>
+      <p>Slots Left: {{ 50 - status.count }}/50</p>
+
+      {% if status.can_order %}
+        <form method="POST" action="{% url 'apply_special_order' %}">
+          {% csrf_token %}
+          <input type="hidden" name="meal_type" value="{{ meal }}">
+          <button>Apply for {{ meal|title }}</button>
+        </form>
+      {% elif status.is_open %}
+        <p class="note">⚠️ Not eligible or already booked.</p>
+      {% else %}
+        <p class="note">⏳ Booking not open yet.</p>
+      {% endif %}
+
+      <!-- Show QR if already booked -->
+      {% for booking in all_bookings %}
+        {% if booking.meal_type == meal and booking.date == today %}
+          <div class="qr-box">
+            {% if booking.qr_code %}
+              <img class="qr-img" src="{{ booking.qr_code.url }}" alt="QR">
+            {% endif %}
+            <p>Email: {{ user.email }}</p>
+            <p>Roll No: {{ user.rollnumber }}</p>
+            <p>Date: {{ today }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+</body>
+</html>

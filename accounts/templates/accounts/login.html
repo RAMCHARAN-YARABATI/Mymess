@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login with OTP</title>
+  <link rel="stylesheet" href="{% static 'accounts/style.css' %}">
+</head>
+<body>
+  <div class="wrapper">
+    <h1>Login</h1>
+    <form method="post" action="{% url 'send_otp' %}">
+      {% csrf_token %}
+      {% if error %}
+        <p style="color: red; text-align: center;">{{ error }}</p>
+      {% endif %}
+      {% if message %}
+        <p style="color: green; text-align: center;">{{ message }}</p>
+      {% endif %}
+
+      <div>
+        <label for="email"><span>@</span></label>
+        <input required type="email" id="email" name="email" placeholder="Enter your email" value="{{ email|default:'' }}">
+      </div> 
+
+      {% if otp_sent %}
+      <div class="otp-boxes">
+        <input type="text" name="otp1" maxlength="1" required oninput="moveNext(this, 'otp2')">
+        <input type="text" name="otp2" maxlength="1" required oninput="moveNext(this, 'otp3')">
+        <input type="text" name="otp3" maxlength="1" required oninput="moveNext(this, 'otp4')">
+        <input type="text" name="otp4" maxlength="1" required>
+      </div>
+      {% endif %}
+      <div>
+        <button type="submit">
+          {% if otp_sent %}
+            Verify OTP
+          {% else %}
+            Send OTP
+          {% endif %}
+        </button>
+      </div>
+      <p>Create Account <a href='{% url "signup" %}'> Signup</a></p>
+    </form>
+  </div>
+  <script>
+    function moveNext(current, nextId) {
+      if (current.value.length === 1) {
+        document.getElementsByName(nextId)[0].focus();
+      }
+    }
+  </script>
+</body>
+</html>

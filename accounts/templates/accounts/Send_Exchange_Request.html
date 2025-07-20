@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exchange Meal QR</title>
+    <link rel="stylesheet" href="/static/accounts/exchange.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Send Exchange Request</h1>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <label for="receiver_email">Recipient Email</label>
+            <input type="email" name="receiver_email" required>
+
+            <label for="meal_type">Meal Type</label>
+            <select name="meal_type" required>
+                <option value="breakfast">Breakfast</option>
+                <option value="lunch">Lunch</option>
+                <option value="dinner">Dinner</option>
+            </select>
+
+            <label for="date">Date</label>
+            <input type="date" name="date" required>
+
+            <button type="submit">Send Request</button>
+        </form>
+
+        <div class="nav">
+            <a href="/home">🏠 Home</a>
+        </div>
+    </div>
+</body>
+</html>

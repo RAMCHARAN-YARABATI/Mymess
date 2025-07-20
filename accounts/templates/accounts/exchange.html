@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>QR Exchange</title>
+  <link rel="stylesheet" href="{% static 'accounts/exchange.css' %}">
+</head>
+<body>
+  <header>
+    <h2>QR Exchange</h2>
+    <div>
+      <a class="home-btn" href="{% url 'home' %}">Home</a>
+      <span class="wallet">Wallet: ₹{{ user.refund_wallet }}</span>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="form-section">
+      <h3>Send Exchange Request</h3>
+      <form method="POST">
+        {% csrf_token %}
+        <label>Recipient's Email:
+          <input type="email" name="receiver_email" required>
+        </label>
+        <label>Meal Type:
+          <select name="meal_type">
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+          </select>
+        </label>
+        <label>Date:
+          <input type="date" name="date" min="{{ today }}" max="{{ tomorrow }}" required>
+        </label>
+        <button type="submit">Send Request</button>
+      </form>
+    </section>
+
+    <section class="requests-section">
+      <h3>Incoming Requests</h3>
+      {% for req in incoming_requests %}
+      <div class="request-box">
+        <p><strong>From:</strong> {{ req.sender.email }}</p>
+        <p><strong>Meal:</strong> {{ req.meal_type|title }}</p>
+        <p><strong>Date:</strong> {{ req.date }}</p>
+        <form method="POST" action="{% url 'handle_exchange' req.id %}">
+          {% csrf_token %}
+          <button name="action" value="accept">Accept</button>
+          <button name="action" value="reject">Reject</button>
+        </form>
+      </div>
+      {% empty %}
+        <p>No pending requests.</p>
+      {% endfor %}
+    </section>
+  </div>
+</body>
+</html>
