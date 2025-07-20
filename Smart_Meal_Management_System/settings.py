@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'Smart_Meal_Management_System.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get("postgresql://postgres:123@localhost:5432/Smart_Meal_Management_System")
+        default=os.environ.get("postgres://postgres:123@localhost:5432/Smart_Meal_Management_System")
     )
 }
 
