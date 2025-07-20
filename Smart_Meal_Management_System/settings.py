@@ -76,11 +76,10 @@ WSGI_APPLICATION = 'Smart_Meal_Management_System.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-
-
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get("postgres://postgres:123@localhost:5432/Smart_Meal_Management_System")
+        default='postgres://postgres:123@localhost:5432/Smart_Meal_Management_System',
+        conn_max_age=600
     )
 }
 
