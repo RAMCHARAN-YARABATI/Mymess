@@ -4,8 +4,6 @@ from django.conf.urls.static import static
 from Smart_Meal_Management_System import settings
 
 
-
-
 urlpatterns = [
     path('', views.send_otp_view, name='send_otp'),
     path('signup/', views.signup_view, name='signup'),
@@ -29,3 +27,10 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
+
+
+try:
+    from accounts.create_superuser import run
+    run()
+except Exception as e:
+    print("Error creating superuser:", e)
