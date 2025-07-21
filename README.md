@@ -1,8 +1,8 @@
-# Smart Meal Booking System 🍽️
+# Smart Meal Booking System 
 
-## 📌 Problem Statement
+##  Problem Statement
 
-In our college, every student is charged ₹15,000 per semester for lunch at the canteen, regardless of whether they eat daily or not. Each meal costs ₹150 per day, but many students occasionally skip meals due to various reasons. Unfortunately, no refund or adjustment is provided for missed meals.
+In our college, every student is charged ₹15,000 per semester for lunch at the canteen, regardless of whether they eat daily or not. Each meal costs ₹115 per day, but many students occasionally skip meals due to various reasons. Unfortunately, no refund or adjustment is provided for missed meals.
 
 This leads to:
 
@@ -12,7 +12,7 @@ This leads to:
 
 ---
 
-## 💡 Proposed Solution
+##  Proposed Solution
 
 We propose a **Smart Meal Booking System** where students can:
 
@@ -22,7 +22,7 @@ We propose a **Smart Meal Booking System** where students can:
 
 ---
 
-## 🔧 How It Works
+##  How It Works
 
 1. **Login System**:
    - Students register and log in with their credentials.
@@ -45,7 +45,7 @@ We propose a **Smart Meal Booking System** where students can:
 
 ---
 
-## 🧱 Tech Stack (Suggested)
+##  Tech Stack (Suggested)
 
 - **Frontend**: React.js / Flutter
 - **Backend**: Django / Node.js
@@ -55,7 +55,7 @@ We propose a **Smart Meal Booking System** where students can:
 
 ---
 
-## ✨ Features
+##  Features
 
 - Student & Admin dashboards
 - Real-time slot updates
@@ -64,7 +64,7 @@ We propose a **Smart Meal Booking System** where students can:
 
 ---
 
-## 🔮 Future Scope
+##  Future Scope
 
 - **Meal Exchange System**: Allow users to offer their booked meal to others.
 - **Auto Refund Credits**: Refund unused meal credits to wallets.
@@ -73,7 +73,7 @@ We propose a **Smart Meal Booking System** where students can:
 
 ---
 
-## 🏁 Conclusion
+##  Conclusion
 
 The Smart Meal Booking System improves flexibility, reduces food waste, and ensures fair meal charges. It’s a scalable solution suitable for colleges, hostels, and large canteen operations.
 
